@@ -1,0 +1,54 @@
+-- Tunnel
+
+os.loadAPI("apis/MenuClasses/MenuRefuelPrompt")
+os.loadAPI("apis/MenuClasses/MenuTunnelSettings")
+
+Selection = 1
+
+local function run()
+	local height = Settings.GetValue("TunnelHeight")
+	local length = Settings.GetValue("TunnelLength")
+	local useEnderChest = Settings.GetValue("UseEnderChest") == "true"
+	
+	if not Mining.Tunnel(height, length, useEnderChest) then
+		MenuRefuelPrompt.ReturnMenu = MenuTunnel
+		return MenuRefuelPrompt
+	end
+end
+
+Options = {
+	{ "Run", run },
+	{ "Settings", function() return MenuTunnelSettings end }
+}
+
+SelectionUp = function()
+	if Selection > 1 then
+		Selection = Selection - 1
+	end
+end
+
+SelectionDown = function()
+	if Selection < table.getn(Options) then
+		Selection = Selection + 1
+	end
+end
+
+Print = function()
+	for i,v in ipairs(Options) do
+		if Selection == i then
+			print("[",v[1],"]")
+		else
+			print(v[1])
+		end
+	end
+end
+
+Enter = function()
+	if Options[Selection][2] ~= nil then
+		return Options[Selection][2]()
+	end
+end
+
+Escape = function()
+	return MenuMain
+end

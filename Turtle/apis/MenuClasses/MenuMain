@@ -1,0 +1,47 @@
+-- Main
+
+os.loadAPI("apis/MenuClasses/MenuTunnel")
+os.loadAPI("apis/MenuClasses/MenuArea")
+os.loadAPI("apis/MenuClasses/MenuRefueling")
+os.loadAPI("apis/MenuClasses/MenuSettings")
+
+Selection = 1
+
+Options = {
+	{ "Tunnel", function() return MenuTunnel end },
+	{ "Area", function() return MenuArea end }, 
+	{ "Refuel", function() return MenuRefueling end },
+	{ "Settings", function() return MenuSettings end }
+}
+
+SelectionUp = function()
+	if Selection > 1 then
+		Selection = Selection - 1
+	end
+end
+
+SelectionDown = function()
+	if Selection < table.getn(Options) then
+		Selection = Selection + 1
+	end
+end
+
+Print = function()
+	for i,v in ipairs(Options) do
+		if Selection == i then
+			print("[",v[1],"]")
+		else
+			print(v[1])
+		end
+	end
+end
+
+Enter = function()
+	if Options[Selection][2] ~= nil then
+		return Options[Selection][2]()
+	end
+end
+
+Escape = function()
+	-- Has no escape function
+end

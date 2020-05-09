@@ -1,0 +1,67 @@
+-- Miner
+
+MINER_VERSION = "0.3.0"
+MINER_DATE = "09/05/2020"
+
+if not turtle then
+	error("Cannot run on computer")
+end
+
+-- Wait for key input
+function waitKey()
+	local event, key = os.pullEvent("key")
+	return key
+end
+
+
+function main()
+	if not os.loadAPI("apis/Settings") then
+		print("Could not load 'apis/Settings'")
+		return
+	end
+	if not os.loadAPI("apis/TurtleUtilities") then
+		print("Could not load 'apis/TurtleUtilities'")
+		return
+	end
+	if not os.loadAPI("apis/Mining") then
+		print("Could not load 'apis/Mining'")
+		return
+	end
+	if not os.loadAPI("apis/Menus") then
+		print("Could not load 'apis/Menus'")
+		return
+	end
+	
+	Settings.Initialize(
+		"miner",
+		"-- Miner Settings \n" ..
+		"-- General \n" ..
+		"UseEnderChest false \n" ..
+		"-- Tunnel \n" ..
+		"TunnelLength 100 \n" ..
+		"TunnelHeight 1 \n" ..
+		"-- Area \n" ..
+		"AreaWidth 10 \n" ..
+		"AreaHeight 10 \n" ..
+		"AreaLength 10 \n"	
+	)
+	
+	Menus.Header = "Miner v" .. MINER_VERSION .. " " .. MINER_DATE
+	
+	while true do
+		Menus.Print()		
+		local event, key = os.pullEvent("key")
+		if key == keys.up  then
+			Menus.SelectionUp()
+		elseif key == keys.down then
+			Menus.SelectionDown()
+		elseif key == keys.enter then
+			Menus.Enter()
+		elseif key == keys.backspace then
+			Menus.Escape()
+		end
+	end
+end
+
+-- Run program
+main()

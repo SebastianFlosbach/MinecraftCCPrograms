@@ -1,0 +1,34 @@
+-- Menus
+
+os.loadAPI("apis/MenuClasses/MenuMain")
+
+CurrentMenu = MenuMain
+Header = nil
+	
+Print = function()
+	term.clear()
+	term.setCursorPos(1,1)
+	
+	if Menus.Header ~= nil then
+		print(Menus.Header)
+		term.setCursorPos(1,3)
+	end
+
+	CurrentMenu.Print()				
+end
+
+SelectionUp = function()
+	CurrentMenu.SelectionUp()
+end
+
+SelectionDown = function()
+	CurrentMenu.SelectionDown()
+end
+
+Enter = function()
+	CurrentMenu = CurrentMenu.Enter() or CurrentMenu
+end
+
+Escape = function()
+	CurrentMenu = CurrentMenu.Escape() or CurrentMenu
+end
