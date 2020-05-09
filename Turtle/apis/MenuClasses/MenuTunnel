@@ -6,8 +6,8 @@ os.loadAPI("apis/MenuClasses/MenuTunnelSettings")
 Selection = 1
 
 local function run()
-	local height = Settings.GetValue("TunnelHeight")
-	local length = Settings.GetValue("TunnelLength")
+	local height = tonumber(Settings.GetValue("TunnelHeight"))
+	local length = tonumber(Settings.GetValue("TunnelLength"))
 	local useEnderChest = Settings.GetValue("UseEnderChest") == "true"
 	
 	if not Mining.Tunnel(height, length, useEnderChest) then

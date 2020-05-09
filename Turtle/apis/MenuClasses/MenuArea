@@ -7,9 +7,9 @@ Selection = 1
 
 -- Avalable menu options { "name", function() "doStuffOnEnter" end }
 local function run()
-	local width = Settings.GetValue("AreaWidth")
-	local height = Settings.GetValue("AreaHeight")
-	local length = Settings.GetValue("AreaLength")
+	local width = tonumber(Settings.GetValue("AreaWidth"))
+	local height = tonumber(Settings.GetValue("AreaHeight"))
+	local length = tonumber(Settings.GetValue("AreaLength"))
 	local useEnderChest = Settings.GetValue("UseEnderChest") == "true"
 	
 	if not Mining.Area(width, height, length, useEnderChest) then

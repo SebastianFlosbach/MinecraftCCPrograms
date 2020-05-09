@@ -4,9 +4,20 @@
 Selection = 1
 ReturnMenu = nil
 
+-- Return previous menu
+Escape = function()
+	if MenuRefuelPrompt.ReturnMenu == nil then
+		return MenuMain
+	else
+		local menu = MenuRefuelPrompt.ReturnMenu
+		MenuRefuelPrompt.ReturnMenu = nil
+		return menu
+	end
+end
+
 -- Avalable menu options { "name", function() "doStuffOnEnter" end }
 Options = {
-	{"Ok", Escape}
+	{"Ok", function() return Escape() end}
 }
 
 -- Move selection up if possible
@@ -39,16 +50,5 @@ end
 Enter = function()
 	if Options[Selection][2] ~= nil then
 		return Options[Selection][2]()
-	end
-end
-
--- Return previous menu
-Escape = function()
-	if MenuRefuelPrompt.ReturnMenu == nil then
-		return MenuMain
-	else
-		local menu = MenuRefuelPrompt.ReturnMenu
-		MenuRefuelPrompt.ReturnMenu = nil
-		return menu
 	end
 end
