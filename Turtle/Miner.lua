@@ -1,6 +1,6 @@
 -- Miner
 
-MINER_VERSION = "0.3.1"
+MINER_VERSION = "0.3.2"
 MINER_DATE = "10/05/2020"
 
 local API_PATH_BASE = ""

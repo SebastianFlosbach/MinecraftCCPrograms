@@ -78,7 +78,7 @@ local function emptyInventory()
 	return true
 end
 
-local function dig(x,z,h)
+local function dig(x,z,h,useEnderChest)
 	if not TurtleUtilities.Refuel(x*z+x+z) then
 		return false
 	end	
@@ -130,7 +130,7 @@ function Tunnel(h, l, useEnderChest)
 		return false
 	end
 	
-	if not dig(0,l,3) then return false end
+	if not dig(0,l,3,useEnderChest) then return false end
 	
 	if h == 1 then
 		turtle.turnLeft()
@@ -173,24 +173,24 @@ function Area(x,y,z, useEnderChest)
 	while h > 0 do
 		if h > 3 then	
 			up()
-			dig(x,z,3)
+			dig(x,z,3,useEnderChest)
 			returnToStart(x,z)
 			up()
 			up()
 			h = h - 3
 		elseif h == 3 then
 			up()
-			dig(x,z,3)
+			dig(x,z,3,useEnderChest)
 			returnToStart(x,z)
 			if useEnderChest then emptyInventory() end
 			return true
 		elseif h == 2 then
-			dig(x,z,2)
+			dig(x,z,2, useEnderChest)
 			returnToStart(x,z)
 			if useEnderChest then emptyInventory() end
 			return true
 		elseif h == 1 then
-			dig(x,z,1)
+			dig(x,z,1,useEnderChest)
 			returnToStart(x,z)
 			if useEnderChest then emptyInventory() end
 			return true
