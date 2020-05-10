@@ -42,13 +42,6 @@ local function returnToStart(x,z)
 	end
 end
 
-local function emptyInventoryIfFull()
-	if turtle.getItemCount(16) > 0 then
-		return emptyInventory()
-	end
-	return false
-end
-
 local function emptyInventory()
 	local rot = 0
 	while turtle.detect() and rot < 4 do
@@ -76,6 +69,13 @@ local function emptyInventory()
 		turtle.turnLeft()
 	end
 	return true
+end
+
+local function emptyInventoryIfFull()
+	if turtle.getItemCount(16) > 0 then
+		return emptyInventory()
+	end
+	return false
 end
 
 local function dig(x,z,h,useEnderChest)
