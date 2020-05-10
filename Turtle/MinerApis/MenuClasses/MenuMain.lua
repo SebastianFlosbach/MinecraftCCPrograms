@@ -1,9 +1,14 @@
 -- Main
 
-os.loadAPI("apis/MenuClasses/MenuTunnel")
-os.loadAPI("apis/MenuClasses/MenuArea")
-os.loadAPI("apis/MenuClasses/MenuRefueling")
-os.loadAPI("apis/MenuClasses/MenuSettings")
+local API_PATH_BASE = ""
+if not fs.exists("MinerApis") then
+	API_PATH_BASE = "rom/programs/turtle/"
+end
+
+os.loadAPI(API_PATH_BASE .. "MinerApis/MenuClasses/MenuTunnel.lua")
+os.loadAPI(API_PATH_BASE .. "MinerApis/MenuClasses/MenuArea.lua")
+os.loadAPI(API_PATH_BASE .. "MinerApis/MenuClasses/MenuRefueling.lua")
+os.loadAPI(API_PATH_BASE .. "MinerApis/MenuClasses/MenuSettings.lua")
 
 Selection = 1
 

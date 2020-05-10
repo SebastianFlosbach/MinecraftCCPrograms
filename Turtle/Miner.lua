@@ -1,7 +1,17 @@
 -- Miner
 
-MINER_VERSION = "0.3.0"
-MINER_DATE = "09/05/2020"
+MINER_VERSION = "0.3.1"
+MINER_DATE = "10/05/2020"
+
+local API_PATH_BASE = ""
+if not fs.exists("MinerApis") then
+	API_PATH_BASE = "rom/programs/turtle/"
+end
+
+local API_PATH_SETTINGS = "MinerApis/Settings.lua"
+local API_PATH_TURTLEUTILITIES = "MinerApis/TurtleUtilities.lua"
+local API_PATH_MINING = "MinerApis/Mining.lua"
+local API_PATH_MENUS = "MinerApis/Menus.lua"
 
 if not turtle then
 	error("Cannot run on computer")
@@ -15,20 +25,20 @@ end
 
 
 function main()
-	if not os.loadAPI("apis/Settings") then
-		print("Could not load 'apis/Settings'")
+	if not os.loadAPI(API_PATH_BASE .. API_PATH_SETTINGS) then
+		print("Could not load 'Settings'")
 		return
 	end
-	if not os.loadAPI("apis/TurtleUtilities") then
-		print("Could not load 'apis/TurtleUtilities'")
+	if not os.loadAPI(API_PATH_BASE .. API_PATH_TURTLEUTILITIES) then
+		print("Could not load 'TurtleUtilities'")
 		return
 	end
-	if not os.loadAPI("apis/Mining") then
-		print("Could not load 'apis/Mining'")
+	if not os.loadAPI(API_PATH_BASE .. API_PATH_MINING) then
+		print("Could not load 'Mining'")
 		return
 	end
-	if not os.loadAPI("apis/Menus") then
-		print("Could not load 'apis/Menus'")
+	if not os.loadAPI(API_PATH_BASE .. API_PATH_MENUS) then
+		print("Could not load 'Menus'")
 		return
 	end
 	

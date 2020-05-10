@@ -1,6 +1,11 @@
 -- MenuArea
 
-os.loadAPI("apis/MenuClasses/MenuAreaSettings")
+local API_PATH_BASE = ""
+if not fs.exists("MinerApis") then
+	API_PATH_BASE = "rom/programs/turtle/"
+end
+
+os.loadAPI(API_PATH_BASE .. "MinerApis/MenuClasses/MenuAreaSettings.lua")
 
 -- Currently selected menu option
 Selection = 1
