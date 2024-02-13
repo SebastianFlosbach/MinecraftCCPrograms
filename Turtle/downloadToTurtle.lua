@@ -21,5 +21,5 @@ files = {
 
 
 for i,v in pairs(files) do
-  shell.run("wget https://github.com/SebastianFlosbach/MinecraftCCPrograms/raw/master/Turtle/" + v + " " + v)
+  shell.run("wget https://github.com/SebastianFlosbach/MinecraftCCPrograms/raw/master/Turtle/" .. v .. " " .. v)
 end
