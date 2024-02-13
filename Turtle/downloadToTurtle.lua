@@ -1,6 +1,6 @@
-cd /
-mkdir MinerApis
-mkdir MinerApis/MenuClasses
+shell.run("cd /")
+shell.run("mkdir MinerApis")
+shell.run("mkdir MinerApis/MenuClasses")
 
 files = {
   "Miner.lua",
@@ -21,5 +21,5 @@ files = {
 
 
 for i,v in pairs(files) do
-  wget "https://github.com/SebastianFlosbach/MinecraftCCPrograms/raw/master/Turtle/" + v + " " + v
+  shell.run("wget https://github.com/SebastianFlosbach/MinecraftCCPrograms/raw/master/Turtle/" + v + " " + v)
 end
